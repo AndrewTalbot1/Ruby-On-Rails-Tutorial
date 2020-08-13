@@ -2,7 +2,7 @@ url: http://google.com
 browser: chrome
 
 #Browser Stack
-remote_browser: "Chrome"
+# remote_browser: "Chrome"
 os_version: "Mojave"
 resolution: "1920x1080"
 os: "OS X"
