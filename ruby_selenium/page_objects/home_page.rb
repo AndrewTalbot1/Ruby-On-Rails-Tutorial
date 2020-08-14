@@ -9,7 +9,6 @@ module HomePage
 
   def open_home_page(driver)
     url = ReadYamlFile.get_url
-    # driver = WebDriver.browser
     $logger.info("Opening the browser " )
     driver.get(url)
     $logger.info("Opening the home page of: " + url)

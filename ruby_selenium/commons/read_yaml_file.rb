@@ -7,6 +7,7 @@ module ReadYamlFile
     
     $url = config["url"]
     $browser = config["browser"]
+    $browser_stack = config["browser_stack"]
     $remote_browser = config["remote_browser"]
     $os_version = config["os_version"]
     $resolution = config["resolution"]
@@ -25,6 +26,10 @@ module ReadYamlFile
 
     def get_browser()
         return $browser
+    end
+
+    def run_browser_stack()
+      return $browser_stack
     end
 
     def get_remote_browser()

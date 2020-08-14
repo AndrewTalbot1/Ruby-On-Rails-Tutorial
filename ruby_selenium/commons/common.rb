@@ -10,6 +10,7 @@ class Common
   def initialize(driver)
       @driver = driver
   end
+  
   #
   # Finds the element of a button
   # Throws an error if no element is visable
@@ -41,6 +42,7 @@ class Common
       driver.quit()
     end
   end
+
   #
   # Basic Submit style function
   #
@@ -49,7 +51,7 @@ class Common
       $logger.info("Pressing the Enter key")
       element = driver.find_element(el)
       element.submit
-    rescue
+    rescue Selenium::WebDriver::Error::NoSuchElementError => nsee
        $logger.info("There was no element to send keys to")
        $logger.info("Closing driver down")
        driver.quit()    

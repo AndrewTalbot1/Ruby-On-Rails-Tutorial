@@ -9,12 +9,14 @@ include ReadYamlFile
 
 $logger = Logger.new(STDOUT)
 $browser = ReadYamlFile.get_browser
+$browser_stack = ReadYamlFile.run_browser_stack
 
 
 module WebDriver
     def browser()
         begin
-        if $browser == nil
+          puts $browser_stack
+        if $browser_stack == true
           $logger.info("browserstack has been detected")
           caps = Selenium::WebDriver::Remote::Capabilities.new           
           caps['browser'] = ReadYamlFile.get_remote_browser()
