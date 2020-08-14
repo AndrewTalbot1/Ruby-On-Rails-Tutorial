@@ -4,7 +4,7 @@ require 'webdrivers'
 require "selenium-webdriver"
 require 'rbconfig'
 
-require_relative "read_yaml_file.rb"
+require_relative 'read_yaml_file.rb'
 include ReadYamlFile
 
 $logger = Logger.new(STDOUT)
@@ -35,16 +35,16 @@ module WebDriver
 
                 if $browser.downcase() == "chrome"
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/mac_drivers/chromedriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
                     driver = Selenium::WebDriver.for :chrome
                 elsif $browser.downcase() == "firefox"
                     $logger.info("firefox has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/mac_drivers/geckodriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/geckodriver"
                     driver = Selenium::WebDriver.for :firefox
                 else
                     $logger.info("No driver detected default driver launched")
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/mac_drivers/chromedriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
                     driver = Selenium::WebDriver.for :chrome
                 end
 
@@ -53,16 +53,16 @@ module WebDriver
 
                 if $browser.downcase() == "chrome"
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources//windows_drivers_32//chromedriver.exe"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources//windows_drivers_32//chromedriver.exe"
                     driver = Selenium::WebDriver.for :chrome
                 elsif $browser.downcase() == "firefox"
                     $logger.info("firefox has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources//windows_drivers_32//geckodriver.exe"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources//windows_drivers_32//geckodriver.exe"
                     driver = Selenium::WebDriver.for :firefox
                 else
                     $logger.info("No driver detected default driver launched")
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources//windows_drivers_32//chromedriver.exe"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources//windows_drivers_32//chromedriver.exe"
                     driver = Selenium::WebDriver.for :chrome
                 end
             elsif RbConfig::CONFIG['host_os'] =~ /linux/i
@@ -70,16 +70,16 @@ module WebDriver
 
                 if $browser.downcase() == "chrome"
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/linux_drivers/chromedriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/linux_drivers/chromedriver"
                     driver = Selenium::WebDriver.for :chrome
                 elsif $browser.downcase() == "firefox"
                     $logger.info("firefox has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/linux_drivers/geckodriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/linux_drivers/geckodriver"
                     driver = Selenium::WebDriver.for :firefox
                 else
                     $logger.info("No driver detected default driver launched")
                     $logger.info("chrome has been detected")
-                    Selenium::WebDriver::Chrome::Service.driver_path = "resources/linux_drivers/chromedriver"
+                    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/linux_drivers/chromedriver"
                     driver = Selenium::WebDriver.for :chrome
                 end
             end
@@ -89,7 +89,7 @@ module WebDriver
             $logger.info("There is a problem with your properties.yaml")
             $logger.info("No driver detected default driver launched")
             $logger.info("chrome has been detected")
-            Selenium::WebDriver::Chrome::Service.driver_path = "resources/mac_drivers/chromedriver"
+            Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
             driver = Selenium::WebDriver.for :chrome
         end
     end

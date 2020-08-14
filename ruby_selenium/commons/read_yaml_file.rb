@@ -3,7 +3,7 @@ $logger = Logger.new(STDOUT)
 
 module ReadYamlFile
     require 'yaml'
-    config = YAML.load_file("resources/properties.yaml")
+    config = YAML.load_file("../resources/properties.yaml")
     
     $url = config["url"]
     $browser = config["browser"]
