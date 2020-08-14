@@ -7,12 +7,11 @@ require 'logger'
 $logger = Logger.new(STDOUT)
 module HomePage
 
-    def open_home_page()
-        url = ReadYamlFile.get_url
-        driver = WebDriver.browser
-        $logger.info("Opening the browser " )
-        driver.get(url)
-        $logger.info("Opening the home page of: " + url)
-    end
-
+  def open_home_page(driver)
+    url = ReadYamlFile.get_url
+    # driver = WebDriver.browser
+    $logger.info("Opening the browser " )
+    driver.get(url)
+    $logger.info("Opening the home page of: " + url)
+  end
 end
