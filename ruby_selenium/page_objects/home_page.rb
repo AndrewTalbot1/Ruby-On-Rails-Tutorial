@@ -5,8 +5,15 @@ include ReadYamlFile
 require 'logger'
 
 $logger = Logger.new(STDOUT)
+
+#
+# This is the home page of the page_objects section
+#
 module HomePage
 
+#
+# This will open the home page of our app
+#
   def open_home_page(driver)
     url = ReadYamlFile.get_url
     $logger.info("Opening the browser " )

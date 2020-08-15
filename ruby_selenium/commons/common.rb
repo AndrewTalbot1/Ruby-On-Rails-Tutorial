@@ -7,10 +7,13 @@ require 'logger'
 $logger = Logger.new(STDOUT)
 
 class Common
+  #
+  # This Commons class contains all webdriver functionality
+  #
   def initialize(driver)
       @driver = driver
   end
-  
+
   #
   # Finds the element of a button
   # Throws an error if no element is visable

@@ -7,6 +7,7 @@ module ReadYamlFile
     
     $url = config["url"]
     $browser = config["browser"]
+    $is_headless = config['headless']
     $browser_stack = config["browser_stack"]
     $remote_browser = config["remote_browser"]
     $os_version = config["os_version"]
@@ -25,7 +26,13 @@ module ReadYamlFile
     end
 
     def get_browser()
-        return $browser
+      if $browser != nil
+        return $browser.downcase()
+      end
+    end
+
+    def run_headless
+      return $is_headless
     end
 
     def run_browser_stack()
