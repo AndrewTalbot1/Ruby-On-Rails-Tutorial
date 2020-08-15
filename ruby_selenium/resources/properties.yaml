@@ -1,7 +1,7 @@
 url: http://google.com
-browser: chrome
+browser: firefox
 
-headless: true
+headless: false
 
 browser_stack: false
 remote_browser: "Chrome"

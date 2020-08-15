@@ -76,6 +76,9 @@ module WebDriver
     if ($headless == true and $browser == "chrome")
       mac_headless_chrome_browser()
 
+    elsif ($headless == true and $browser == "firefox")
+      mac_headless_firefox_browser()
+
     elsif $browser == "chrome"
       mac_chrome_browser()
 
@@ -96,6 +99,11 @@ module WebDriver
       driver = Selenium::WebDriver.for :chrome
   end
 
+  #
+  # mac_driver will call mac_chrome_browser() if chrome has been detected
+  # and if headless has been detected
+  #
+
   def mac_headless_chrome_browser()
     $logger.info("Headless " + $browser + " has been detected")
     Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
@@ -110,6 +118,18 @@ module WebDriver
     $logger.info($browser + " has been detected")
     Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/geckodriver"
     driver = Selenium::WebDriver.for :firefox
+  end
+
+  #
+  # mac_driver will call mac_headless_firefox_browser() if firefox has been detected
+  # and if headless has been detected
+  #
+
+  def mac_headless_firefox_browser()
+    $logger.info("Headless " + $browser + " has been detected")
+    Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
+    options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
+    driver = Selenium::WebDriver.for :firefox, options: options
   end
 
   #

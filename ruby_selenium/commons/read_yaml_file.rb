@@ -40,39 +40,57 @@ module ReadYamlFile
     end
 
     def get_remote_browser()
+      if $remote_browser != nil
         return $remote_browser
+      end
     end
 
     def get_os_version()
+      if $os_version != nil
         return $os_version
+      end
     end
 
     def get_resolution()
+      if $resolution != nil
         return $resolution
+      end
     end
 
     def get_os()
+      if $os != nil
         return $os
+      end
     end
 
     def get_browser_version() 
+      if $browser_version != nil
         return $browser_version
+      end
     end
 
     def get_test_name()
+      if $name != nil
         return $name
+      end
     end
 
     def get_browserstack_selenium_version()
+      if $browserstack_selenium_version != nil
         return $browserstack_selenium_version
+      end
     end
 
     def get_user_name()
+      if $user_name != nil
         return $user_name
+      end
     end
 
     def get_password()
+      if $password != nil
         return $password
+      end
     end
 
 end
