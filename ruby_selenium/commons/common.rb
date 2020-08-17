@@ -25,8 +25,6 @@ class Common
       element.click
     rescue Selenium::WebDriver::Error::NoSuchElementError => nsee
       $logger.info("There was no element found to click on")
-      $logger.info("Closing driver down")
-      driver.quit()
     end 
   end
 
@@ -41,8 +39,6 @@ class Common
       element.send_keys(text)  
     rescue Selenium::WebDriver::Error::NoSuchElementError => nsee
       $logger.info("There was no element to send keys to")
-      $logger.info("Closing driver down")
-      driver.quit()
     end
   end
 
@@ -55,9 +51,7 @@ class Common
       element = driver.find_element(el)
       element.submit
     rescue Selenium::WebDriver::Error::NoSuchElementError => nsee
-       $logger.info("There was no element to send keys to")
-       $logger.info("Closing driver down")
-       driver.quit()    
+       $logger.info("There was no element to send keys to")  
     end
   end
 

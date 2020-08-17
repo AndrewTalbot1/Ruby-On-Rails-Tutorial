@@ -35,9 +35,6 @@ module WebDriver
         elsif is_linux()
           linux_driver()
         end
-
-    rescue Selenium::WebDriver::Error::WebDriverError => wde
-      default_driver_if_error()
     end
   end
 
@@ -73,6 +70,7 @@ module WebDriver
   # This method is used if the OS system is Mac
   #
   def mac_driver()
+  begin
     if ($headless == true and $browser == "chrome")
       mac_headless_chrome_browser()
 
@@ -84,8 +82,9 @@ module WebDriver
 
     elsif $browser == "firefox"
       mac_fire_fox_browser()
-      
-    else
+    end
+
+    rescue Selenium::WebDriver::Error::WebDriverError => wde
       mac_default_browser()
     end
   end
@@ -136,7 +135,7 @@ module WebDriver
   # mac_driver will call mac_default_driver() if no driver has been detected
   #
   def mac_default_browser()
-    $logger.info("No driver detected default driver launched")
+    $logger.info("No driver detected default mac driver launched")
     $logger.info("chrome has been detected")
     Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
     driver = Selenium::WebDriver.for :chrome
@@ -154,11 +153,14 @@ module WebDriver
   # This method is used if the OS system is Windows
   #
   def windows_driver()
-    if $browser == "chrome"
-      windows_chrome_browser()
-    elsif $browser == "firefox"
-      windows_firefox_browser()
-    else
+    begin
+      if $browser == "chrome"
+        windows_chrome_browser()
+      elsif $browser == "firefox"
+        windows_firefox_browser()
+      end
+
+    rescue Selenium::WebDriver::Error::WebDriverError => wde
       windows_default_browser()
     end
   end
@@ -185,7 +187,7 @@ module WebDriver
   # windows_driver will call windows_default_browser() if no driver has been detected
   #
   def windows_default_browser()
-    $logger.info("No driver detected default driver launched")
+    $logger.info("No driver detected default windows driver launched")
     $logger.info("chrome has been detected")
     Selenium::WebDriver::Chrome::Service.driver_path = "../resources//windows_drivers_32//chromedriver.exe"
     driver = Selenium::WebDriver.for :chrome
@@ -203,11 +205,14 @@ module WebDriver
   # This method is used if the OS system is a linux
   #
   def linux_driver()
-    if $browser == "chrome"
-      linux_chrome_browser()
-    elsif $browser == "firefox"
-      linux_fire_fox_browser()
-    else
+    begin
+      if $browser == "chrome"
+        linux_chrome_browser()
+      elsif $browser == "firefox"
+        linux_fire_fox_browser()
+      end
+      
+    rescue Selenium::WebDriver::Error::WebDriverError => wde
       linux_default_browser()
     end
   end
@@ -234,7 +239,7 @@ module WebDriver
   # linux_driver will call linux_default_browser() if no driver has been detected
   #
   def linux_default_browser()
-    $logger.info("No driver detected default driver launched")
+    $logger.info("No driver detected default linux driver launched")
     $logger.info("chrome has been detected")
     Selenium::WebDriver::Chrome::Service.driver_path = "../resources/linux_drivers/chromedriver"
     driver = Selenium::WebDriver.for :chrome
@@ -243,12 +248,14 @@ module WebDriver
   #
   # This method is used if there are any errors
   # It will launch default drivers
+  # This is a all else fail safe
   #
   def default_driver_if_error()
       $logger.info(
-        "There is a problem with your properties.yaml\n
+        "There is a problem with your properties.yaml or driver file path\n
         No driver detected default driver launched\n
-        chrome has been detected")
+        chrome has been detected.\n
+        Major driver issue.... default_driver_if_error() has been called")
       Selenium::WebDriver::Chrome::Service.driver_path = "../resources/mac_drivers/chromedriver"
       driver = Selenium::WebDriver.for :chrome
   end
