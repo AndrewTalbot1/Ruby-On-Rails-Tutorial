@@ -13,10 +13,6 @@ $logger = Logger.new(STDOUT)
 
 class Test_One < Test::Unit::TestCase
   
-  #
-  # All WebElements are listed below in hashmaps
-  #
-  search_bar = {:name => 'q'}
 
   #
   # The set up method for each test
@@ -32,10 +28,8 @@ class Test_One < Test::Unit::TestCase
   # tests go here
   #
   test 'test_1' do
-    $common.click_button($driver, search_bar)
-    $common.send_keys_to_field($driver, search_bar, "TestingBot")
-    $common.enter($driver, search_bar)
-    assert_equal($driver.title, "TestingBot - Google Search")
+    type_stuff_in_field("TestingBot - Google Search")
+    $common.check_condition($driver.title != "", $driver, "test_1 failed")
   end
 
   #

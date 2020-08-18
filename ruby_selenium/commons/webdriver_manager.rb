@@ -8,7 +8,7 @@ require_relative 'read_yaml_file.rb'
 include ReadYamlFile
 
 $logger = Logger.new(STDOUT)
-$browser = ReadYamlFile.get_browser
+$browser = ReadYamlFile.get_browser()
 $browser_stack = ReadYamlFile.get_config("browser_stack")
 $headless = ReadYamlFile.get_config("headless")
 

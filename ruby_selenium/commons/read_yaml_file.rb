@@ -7,6 +7,7 @@ $logger = Logger.new(STDOUT)
 module ReadYamlFile
     require 'yaml'
     $config = YAML.load_file("../resources/properties.yaml")
+    $browser = $config["browser"]
     
     #
     # Pass a string KEY and it will return a value
