@@ -1,0 +1,25 @@
+url: http://google.com
+browser: chrome
+
+
+headless: false
+#
+# Local server info for Appium
+#
+server: "http://0.0.0.0:4723/wd/hub"
+local_app_location: ""
+
+#
+# Browser Stack info
+#
+browser_stack: false
+build_name: "My First OS build"
+name: "Sample TEST"
+project: "My test project"
+device: 'iPhone 11 Pro'
+os: "13"
+app_location: ""
+user_name: ""
+access_key: ""
+
+
