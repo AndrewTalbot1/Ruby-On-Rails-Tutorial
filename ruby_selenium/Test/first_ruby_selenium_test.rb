@@ -35,7 +35,7 @@ class Test_One < Test::Unit::TestCase
     $common.click_button($driver, search_bar)
     $common.send_keys_to_field($driver, search_bar, "TestingBot")
     $common.enter($driver, search_bar)
-    assert_equal($driver.title, "Google")
+    assert_equal($driver.title, "TestingBot - Google Search")
   end
 
   #

@@ -15,7 +15,7 @@ module HomePage
 # This will open the home page of our app
 #
   def open_home_page(driver)
-    url = ReadYamlFile.get_url
+    url = ReadYamlFile.get_config("url")
     $logger.info("Opening the browser " )
     driver.get(url)
     $logger.info("Opening the home page of: " + url)

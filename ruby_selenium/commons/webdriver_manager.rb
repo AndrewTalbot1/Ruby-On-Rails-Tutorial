@@ -9,8 +9,8 @@ include ReadYamlFile
 
 $logger = Logger.new(STDOUT)
 $browser = ReadYamlFile.get_browser
-$browser_stack = ReadYamlFile.run_browser_stack
-$headless = ReadYamlFile.run_headless
+$browser_stack = ReadYamlFile.get_config("browser_stack")
+$headless = ReadYamlFile.get_config("headless")
 
 #
 # This module controls selenium
@@ -44,14 +44,14 @@ module WebDriver
   def browser_stack()
     $logger.info("browserstack has been detected")
           caps = Selenium::WebDriver::Remote::Capabilities.new           
-          caps['browser'] = ReadYamlFile.get_remote_browser()
-          caps['os_version'] = ReadYamlFile.get_os_version()
-          caps['resolution'] = ReadYamlFile.get_resolution()
-          caps['os'] = ReadYamlFile.get_os()
-          caps['browser_version'] = ReadYamlFile.get_browser_version()
-          caps["name"] = ReadYamlFile.get_test_name()
-          username = ReadYamlFile.get_user_name()
-          access_key = ReadYamlFile.get_password()
+          caps['browser'] = ReadYamlFile.get_config("remote_browser")
+          caps['os_version'] = ReadYamlFile.get_config("os_version")
+          caps['resolution'] = ReadYamlFile.get_config("resolution")
+          caps['os'] = ReadYamlFile.get_config("OS X")
+          caps['browser_version'] = ReadYamlFile.get_config("browser_version")
+          caps["name"] = ReadYamlFile.get_config("name")
+          username = ReadYamlFile.get_config("user_name")
+          access_key = ReadYamlFile.get_config("access_key")
           
           driver = Selenium::WebDriver.for(:remote,
             :url => "https://" + username + ":" + access_key + "@hub-cloud.browserstack.com/wd/hub",
@@ -211,7 +211,7 @@ module WebDriver
       elsif $browser == "firefox"
         linux_fire_fox_browser()
       end
-      
+
     rescue Selenium::WebDriver::Error::WebDriverError => wde
       linux_default_browser()
     end
