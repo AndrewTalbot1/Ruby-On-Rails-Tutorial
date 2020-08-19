@@ -25,9 +25,9 @@ class Test_One < Test::Unit::TestCase
   
 
   #
-  # tests go here mock tests
+  # tests go here, mock tests
   #
-  test 'test_1' do
+  def test_1
     type_stuff_in_field("TestingBot")
     $common.check_condition($driver.title == "TestingBot - Google Search", $driver, "test_1 failed")
   end

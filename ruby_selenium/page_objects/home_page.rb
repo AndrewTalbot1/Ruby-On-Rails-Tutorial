@@ -26,6 +26,9 @@ module HomePage
     $logger.info("Opening the home page of: " + url)
   end
 
+  #
+  # Start of the home page objects
+  #
   def type_stuff_in_field(string)
     $common.click_button($driver, $search_bar, 1)
     $common.send_keys_to_field($driver, $search_bar, 1, string)
