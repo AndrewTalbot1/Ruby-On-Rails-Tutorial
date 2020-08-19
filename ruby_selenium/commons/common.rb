@@ -51,7 +51,7 @@ class Common
   #
   def screen_shot(driver, failmessage)
     $logger.info("Taking a screen shot")
-    driver.save_screenshot "../resources/screen_shots/#{Time.now.strftime("#{failmessage}__%d_%m_%Y__%H_%M_%S")}.png"
+    driver.save_screenshot "../resources/screen_shots/#{Time.now.strftime("#{failmessage} %d_%m_%Y__%H_%M_%S")}.png"
   end
 
   #

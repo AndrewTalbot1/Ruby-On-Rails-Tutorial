@@ -25,11 +25,11 @@ class Test_One < Test::Unit::TestCase
   
 
   #
-  # tests go here
+  # tests go here mock tests
   #
   test 'test_1' do
-    type_stuff_in_field("TestingBot - Google Search")
-    $common.check_condition($driver.title != "", $driver, "test_1 failed")
+    type_stuff_in_field("TestingBot")
+    $common.check_condition($driver.title == "TestingBot - Google Search", $driver, "test_1 failed")
   end
 
   #
